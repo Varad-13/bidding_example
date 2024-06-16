@@ -1,13 +1,21 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-Hi This is Index
-{% for product in products %}
-    <div>
-        <p>{{ product.name }}</p>
-        <p>{{ product.description }}</p>
-        <p>{{ product.price }}</p>
-        <p>Ending Date: {{ product.ending_date }}</p>
+<div class="body p-4">
+    <h5>Products</h5>
+    {% for product in products %}
+    <div class="card max-w-64 justify-items-center	mt-2 p-4	flex-grow" style="background-color: rgba(73, 73, 73, 0.525);">  
+        <img class = "flex-shrink justify-self-center self-baseline mb-2" style="border-radius: 1rem;" src="{{ product.product_image }}" class="card-img-top" alt="{{ product.product_name }}">
+        <div class="card-body p-2">
+            <h5 class="card-title">{{ product.product_name }}</h5>
+            <p class="card-text">Starting Bid: {{ product.starting_bid }}</p>
+            <p class="card-text">Posted Date: {{ product.posted_date|date:"F j, Y H:i" }}</p>
+            <p class="card-text">Ending Date: {{ product.ending_date|date:"F j, Y H:i" }}</p>
+            <p class="card-text">Author: {{ product.author.username }}</p>
+        </div>
+            
+
     </div>
-{% endfor %}
+    {% endfor %}
+</div>
 {% endblock %}

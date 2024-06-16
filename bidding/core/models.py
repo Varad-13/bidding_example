@@ -15,7 +15,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.ending_date:
-            self.ending_date = self.posted_date + timedelta(days=7)
+            self.ending_date = timezone.now() + timedelta(days=7)
         super().save(*args, **kwargs)
 
 class Bids(models.Model):

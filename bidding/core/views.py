@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
+from django.utils import timezone
 from .models import Product, Bids
 
 # Create your views here.
@@ -63,11 +65,11 @@ def addProduct(request):
                 author = request.user
             )
             new_product.save()
+            return render(request, 'core.index.html')
         except Exception as e:
             return HttpResponse(f"An error occurred: {e}", status=500)
     else:
-        return render(request, 'core/index.html')
-
+        return render(request, 'core/add_product.html')
 
 def removeProduct(request):
     pass
