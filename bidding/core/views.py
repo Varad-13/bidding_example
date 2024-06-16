@@ -3,7 +3,9 @@ from .models import Product, Bids
 
 # Create your views here.
 def index(request):
-    return render(request, "core/index.html")
+    current_time = timezone.now()
+    products = Product.objects.filter(ending_date__gt=current_time)
+    return render(request, "core/index.html", {'products': products})
 
 def addBid(request):
     if request.method == 'POST':
