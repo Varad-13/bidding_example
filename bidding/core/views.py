@@ -50,7 +50,22 @@ def showBids(request):
     pass
 
 def addProduct(request):
-    pass
+    if not request.user.is_authenticated:
+        return HttpResponse("Unauthorized", status=401)
+    if request.method == 'POST':
+        try:
+            new_product = Product(
+                product_name = request.POST.get('product_name'),
+                product_image = request.POST.get('product_url'),
+                starting_bid = int(request.POST.get('starting_bid')),
+                author = request.user
+            )
+            new_product.save()
+        except Exception as e:
+            return HttpResponse(f"An error occurred: {e}", status=500)
+    else:
+        return render(request, 'core/index.html')
+
 
 def removeProduct(request):
     pass
