@@ -36,9 +36,9 @@ def addBid(request):
         )
 
         new_bid.save()
-        return redirect('index')
+        return redirect('index', request)
     else:
-         return HttpResponse("Invalid request method.", status=405)
+         return render(request, 'core/index.html')
 
 def removeBid(request):
     pass
