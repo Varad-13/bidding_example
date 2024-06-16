@@ -8,6 +8,8 @@ def addBid(request):
 
 def removeBid(request):
 
+def changeBid(request):
+
 def addProduct(request):
 
 def removeProduct(request):
