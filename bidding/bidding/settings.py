@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # rest framework
     'rest_framework',
     # bidding apps
+    'core',
     'api',
 ]
 

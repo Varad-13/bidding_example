@@ -19,7 +19,7 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
 class Bids(models.Model):
-    product = ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.FloatField()
     last_updated = models.DateTimeField(auto_now_add=True)
